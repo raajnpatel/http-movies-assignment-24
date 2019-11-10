@@ -33,6 +33,17 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  deleteMovie = e => {
+      e.preventDefault();
+      axios
+          .delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
+          .then(res => {
+              console.log(res);
+              this.props.history.push('/')
+          })
+          .catch(err => console.log(err.response));
+  };
+
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
@@ -45,6 +56,7 @@ export default class Movie extends React.Component {
           Save
         </div>
         <Link to={`/update-movie/${this.state.movie.id}`}>Update</Link>
+          <button onClick={this.deleteMovie}>Delete</button>
       </div>
     );
   }
