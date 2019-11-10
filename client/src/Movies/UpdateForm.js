@@ -39,6 +39,11 @@ const UpdateForm = props => {
             })})
     };
 
+    const addStar = e => {
+        e.preventDefault();
+        setMovie({...movie, stars: [...movie.stars, ""]});
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <input type="text"
@@ -66,6 +71,7 @@ const UpdateForm = props => {
                                onChange={handleStar(index)}
                 />
             })}
+            <button onClick={addStar}>Add Star</button>
             <button type="submit">Update Movie</button>
         </form>
     )
