@@ -5,6 +5,8 @@ export default class SavedList extends Component {
     super(props);
   }
 
+
+
   render() {
     return (
       <div className="saved-list">
@@ -23,6 +25,9 @@ export default class SavedList extends Component {
         <div className="home-button">
           <Link to="/">Home</Link>
         </div>
+          <button className="home-button">
+              <Link to="/add-movie">Add Movie</Link>
+          </button>
       </div>
     );
   }
